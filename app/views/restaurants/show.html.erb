@@ -1,0 +1,21 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><i class="fas fa-location-arrow"></i> <%= @restaurant.address %> </p>
+  <p><i class="fas fa-mobile"></i> <%= @restaurant.phone_number %> </p>
+  <p><i class="fas fa-utensils"></i> <%= @restaurant.category.capitalize %> </p>
+
+  <a href="/restaurants/<%= @restaurant.id %>/reviews/new"><i class="fas fa-plus"></i> Add a review</a>
+
+  <div class="reviews-container">
+    <h2>Reviews</h2>
+    <%if @restaurant.reviews.first.nil? == true %>
+      <h5>No review yet :(</h5>
+      <h5>Be the first to review this restaurant !</h5>
+    <% else %>
+      <% @restaurant.reviews.each do |review| %>
+        <h4><%= review.rating %>/5</h4>
+        <p><i><%= review.content %></i></p>
+    <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="header">
+  <h1>Add a review</h1>
+  <h3><i><%= @restaurant.name %></i></h3>
+</div>
+
+<div class="form">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <div class="form-group">
+      <%= f.label "Your grade"%>
+      <%= f.collection_radio_buttons(
+        :rating, [[0,"0"], [1,"1"], [2,"2"], [3,"3"], [4,"4"], [5,"5"]], :first, :last, boolean_style: :inline) do |b| %>
+        <%= b.label { b.radio_button + b.text } %>
+      <% end %>
+    </div>
+    <%= f.submit "Add your review", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
